@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prasthana_thraya_screens",
+  "info": {
+    "singularName": "prasthana-thraya-screen",
+    "pluralName": "prasthana-thraya-screens",
+    "displayName": "Prasthana-thraya-screens"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "GranthaName": {
+      "type": "string"
+    },
+    "GranthaType": {
+      "type": "enumeration",
+      "enum": [
+        "Upanishad",
+        "Bhagavad Gita",
+        "Brahma Sutra",
+        "Prakarana Grantha",
+        "Other Text"
+      ]
+    },
+    "BhashyamName": {
+      "type": "string"
+    },
+    "BhashyamAuthor": {
+      "type": "enumeration",
+      "enum": [
+        "Sri Shankaracharya",
+        "Sri Upanishad Brahmendra"
+      ]
+    },
+    "EnglishIntroductionToText": {
+      "type": "text"
+    },
+    "BhashyakaraIntroduction": {
+      "type": "component",
+      "component": "shared.text-and-translation",
+      "repeatable": false
+    },
+    "BhashyaEntryCollection": {
+      "type": "component",
+      "component": "default.bhashya-entries",
+      "repeatable": true
+    }
+  }
+}

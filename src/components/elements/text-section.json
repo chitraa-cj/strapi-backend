@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_elements_text_sections",
+  "info": {
+    "displayName": "Text Section",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

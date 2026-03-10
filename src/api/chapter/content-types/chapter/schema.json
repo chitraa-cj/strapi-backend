@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chapters",
+  "info": {
+    "singularName": "chapter",
+    "pluralName": "chapters",
+    "displayName": "Chapter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ChapterTitle": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "grantha": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grantha.grantha",
+      "inversedBy": "chapters"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chapter.chapter",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chapter.chapter",
+      "mappedBy": "parent"
+    },
+    "ShlokaManthraEntry": {
+      "type": "component",
+      "component": "shared.text-and-translation",
+      "repeatable": false
+    },
+    "BhashyamForShlokaManthra": {
+      "type": "component",
+      "component": "shared.text-and-translation",
+      "repeatable": false
+    },
+    "Teekas": {
+      "type": "component",
+      "component": "default.bhashya-entries",
+      "repeatable": true
+    }
+  }
+}

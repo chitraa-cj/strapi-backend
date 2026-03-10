@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "granthas",
+  "info": {
+    "singularName": "grantha",
+    "pluralName": "granthas",
+    "displayName": "Grantha"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "GranthaName": {
+      "type": "string",
+      "required": true
+    },
+    "GranthaType": {
+      "type": "enumeration",
+      "enum": [
+        "Upanishad",
+        "Bhagavad Gita",
+        "Brahma Sutra",
+        "Prakarana Grantha",
+        "Bhakthi Grantha"
+      ]
+    },
+    "BhashyamName": {
+      "type": "string"
+    },
+    "BhashyamAuthor": {
+      "type": "enumeration",
+      "enum": [
+        "Sri Shankarayacharya",
+        "Upanishad Brahmendra"
+      ]
+    },
+    "IntroductionToTextEnglish": {
+      "type": "blocks"
+    },
+    "BhashyakaraIntroduction": {
+      "type": "component",
+      "component": "shared.text-and-translation",
+      "repeatable": false
+    },
+    "chapters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chapter.chapter",
+      "mappedBy": "grantha"
+    }
+  }
+}

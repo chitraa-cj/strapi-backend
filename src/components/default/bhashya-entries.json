@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_bhashya_entries",
+  "info": {
+    "displayName": "TeekaEntries"
+  },
+  "options": {},
+  "attributes": {
+    "TeekaName": {
+      "type": "string"
+    },
+    "TeekaAuthor": {
+      "type": "enumeration",
+      "enum": [
+        "Anandagiri",
+        "Ramaraya Kavi",
+        "Gopalananda",
+        "Narayanasrami"
+      ]
+    },
+      "TeekaEntry": {
+      "type": "component",
+      "component": "shared.text-and-translation",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

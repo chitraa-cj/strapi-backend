@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_translations",
+  "info": {
+    "displayName": "Translations",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "TransliterationText": {
+      "type": "blocks"
+    },
+    "TranslationText": {
+      "type": "blocks"
+    },
+    "LanguageOfTranslation": {
+      "type": "enumeration",
+      "default": "English",
+      "enum": [
+        "English",
+        "Tamil",
+        "Hindi",
+        "Gujarati",
+        "Marathi"
+      ]
+    }
+  },
+  "config": {}
+}
