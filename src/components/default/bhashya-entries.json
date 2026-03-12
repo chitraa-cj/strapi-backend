@@ -5,19 +5,12 @@
   },
   "options": {},
   "attributes": {
-    "TeekaName": {
-      "type": "string"
+    "teeka": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::teeka.teeka"
     },
-    "TeekaAuthor": {
-      "type": "enumeration",
-      "enum": [
-        "Anandagiri",
-        "Ramaraya Kavi",
-        "Gopalananda",
-        "Narayanasrami"
-      ]
-    },
-      "TeekaEntry": {
+    "TeekaEntry": {
       "type": "component",
       "component": "shared.text-and-translation",
       "repeatable": false

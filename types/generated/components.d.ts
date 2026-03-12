@@ -6,23 +6,12 @@ export interface DefaultBhashyaEntries extends Struct.ComponentSchema {
     displayName: 'TeekaEntries';
   };
   attributes: {
-    TeekaAuthor: Schema.Attribute.Enumeration<
-      ['Anandagiri', 'Ramaraya Kavi', 'Gopalananda', 'Narayanasrami']
-    >;
+    teeka: Schema.Attribute.Relation<'oneToOne', 'api::teeka.teeka'>;
     TeekaEntry: Schema.Attribute.Component<
       'shared.text-and-translation',
       false
     >;
-    TeekaName: Schema.Attribute.String;
   };
-}
-
-export interface DefaultShlokaManthraEntries extends Struct.ComponentSchema {
-  collectionName: 'components_default_shloka_manthra_entries';
-  info: {
-    displayName: 'ShlokaManthraEntries';
-  };
-  attributes: {};
 }
 
 export interface ElementsTextSection extends Struct.ComponentSchema {
@@ -114,62 +103,7 @@ export interface SharedTextAndTranslation extends Struct.ComponentSchema {
   };
   attributes: {
     EnglishTranslationText: Schema.Attribute.Blocks;
-    LanguageOfTranslation: Schema.Attribute.Enumeration<
-      [
-        'Tamil',
-        'Kannada',
-        'Telugu',
-        'Mandarin',
-        'Arabic',
-        'French',
-        'Spanish',
-        'Hindi',
-        'German',
-        'Vietnamese',
-        'Assamese',
-        'Kashmiri',
-        'Marathi',
-        'Konkani',
-        'Malayalam',
-        'Punjabi',
-        'Bengali',
-        'Manipuri',
-        'Nepali',
-        'Urdu',
-        'Azerbaijani',
-        'Odia',
-        'Sindhi',
-        'Polish',
-        'Dutch',
-        'Swahili',
-        'Swedish',
-        'Greek',
-        'Amharic',
-        'Hebrew',
-        'Portuguese',
-        'Russian',
-        'Indonesian',
-        'Japanese',
-        'Nigerian Pidgin',
-        'Egyptian Arabic',
-        'Hausa',
-        'Turkish',
-        'Korean',
-        'Thai',
-        'Italian',
-        'Sinhalese',
-        'Ukrainian',
-        'Persian',
-        'Kurdish',
-        'Mongolian',
-        'Tibetan',
-        'Burmese',
-        'Malay',
-        'Gujarati',
-        'Bhojpuri',
-      ]
-    >;
-    OtherLanguagesTranslation: Schema.Attribute.Blocks;
+    OtherTranslations: Schema.Attribute.Component<'shared.translations', true>;
     SanskritTextEntry: Schema.Attribute.Blocks;
   };
 }
@@ -186,7 +120,6 @@ export interface SharedTranslations extends Struct.ComponentSchema {
     > &
       Schema.Attribute.DefaultTo<'English'>;
     TranslationText: Schema.Attribute.Blocks;
-    TransliterationText: Schema.Attribute.Blocks;
   };
 }
 
@@ -194,7 +127,6 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'default.bhashya-entries': DefaultBhashyaEntries;
-      'default.shloka-manthra-entries': DefaultShlokaManthraEntries;
       'elements.text-section': ElementsTextSection;
       'shared.book': SharedBook;
       'shared.media': SharedMedia;

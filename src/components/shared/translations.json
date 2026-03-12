@@ -6,12 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "TransliterationText": {
-      "type": "blocks"
-    },
-    "TranslationText": {
-      "type": "blocks"
-    },
     "LanguageOfTranslation": {
       "type": "enumeration",
       "default": "English",
@@ -22,6 +16,9 @@
         "Gujarati",
         "Marathi"
       ]
+    },
+    "TranslationText": {
+      "type": "blocks"
     }
   },
   "config": {}

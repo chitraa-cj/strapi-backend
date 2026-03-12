@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "manthras",
+  "info": {
+    "singularName": "manthra",
+    "pluralName": "manthras",
+    "displayName": "Manthra"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "inversedBy": "manthras"
+    },
+    "ShlokaManthraNumber": {
+      "type": "string"
+    },
+    "ShlokaManthraEntry": {
+      "type": "component",
+      "component": "shared.text-and-translation",
+      "repeatable": false
+    },
+    "BhashyamEntry": {
+      "type": "component",
+      "component": "shared.text-and-translation",
+      "repeatable": false
+    },
+    "Teekas": {
+      "type": "component",
+      "component": "default.bhashya-entries",
+      "repeatable": true
+    }
+  }
+}

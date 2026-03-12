@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * chapter service
+ * teeka service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::chapter.chapter');
+module.exports = createCoreService('api::teeka.teeka');

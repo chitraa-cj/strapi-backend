@@ -12,64 +12,10 @@
     "EnglishTranslationText": {
       "type": "blocks"
     },
-    "OtherLanguagesTranslation": {
-      "type": "blocks"
-    },
-    "LanguageOfTranslation": {
-      "type": "enumeration",
-      "enum": [
-        "Tamil",
-        "Kannada",
-        "Telugu",
-        "Mandarin",
-        "Arabic",
-        "French",
-        "Spanish",
-        "Hindi",
-        "German",
-        "Vietnamese",
-        "Assamese",
-        "Kashmiri",
-        "Marathi",
-        "Konkani",
-        "Malayalam",
-        "Punjabi",
-        "Bengali",
-        "Manipuri",
-        "Nepali",
-        "Urdu",
-        "Azerbaijani",
-        "Odia",
-        "Sindhi",
-        "Polish",
-        "Dutch",
-        "Swahili",
-        "Swedish",
-        "Greek",
-        "Amharic",
-        "Hebrew",
-        "Portuguese",
-        "Russian",
-        "Indonesian",
-        "Japanese",
-        "Nigerian Pidgin",
-        "Egyptian Arabic",
-        "Hausa",
-        "Turkish",
-        "Korean",
-        "Thai",
-        "Italian",
-        "Sinhalese",
-        "Ukrainian",
-        "Persian",
-        "Kurdish",
-        "Mongolian",
-        "Tibetan",
-        "Burmese",
-        "Malay",
-        "Gujarati",
-        "Bhojpuri"
-      ]
+    "OtherTranslations": {
+      "type": "component",
+      "component": "shared.translations",
+      "repeatable": true
     }
   },
   "config": {}

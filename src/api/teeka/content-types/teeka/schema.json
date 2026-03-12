@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teekas",
+  "info": {
+    "singularName": "teeka",
+    "pluralName": "teekas",
+    "displayName": "Teeka"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "TeekaName": {
+      "type": "string"
+    },
+    "TeekaAuthor": {
+      "type": "enumeration",
+      "enum": [
+        "Anandagiri",
+        "Vachaspati Mishra",
+        "Padmapada",
+        "Sureshvaracharya",
+        "Prakasatman",
+        "Govindananda",
+        "Ramananda Saraswati",
+        "Madhusudana Saraswati",
+        "Dhanapati Suri",
+        "Amalananda",
+        "Appayya Dikshita",
+        "Shankarananda",
+        "Shriharsha",
+        "Chitsukha",
+        "Vidyaranya"
+      ]
+    },
+    "grantha": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grantha.grantha",
+      "inversedBy": "teekas"
+    }
+  }
+}

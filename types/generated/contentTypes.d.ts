@@ -600,47 +600,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiChapterChapter extends Struct.CollectionTypeSchema {
-  collectionName: 'chapters';
-  info: {
-    displayName: 'Chapter';
-    pluralName: 'chapters';
-    singularName: 'chapter';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    BhashyamForShlokaManthra: Schema.Attribute.Component<
-      'shared.text-and-translation',
-      false
-    >;
-    ChapterTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    children: Schema.Attribute.Relation<'oneToMany', 'api::chapter.chapter'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    grantha: Schema.Attribute.Relation<'manyToOne', 'api::grantha.grantha'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::chapter.chapter'
-    > &
-      Schema.Attribute.Private;
-    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    parent: Schema.Attribute.Relation<'manyToOne', 'api::chapter.chapter'>;
-    publishedAt: Schema.Attribute.DateTime;
-    ShlokaManthraEntry: Schema.Attribute.Component<
-      'shared.text-and-translation',
-      false
-    >;
-    Teekas: Schema.Attribute.Component<'default.bhashya-entries', true>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -676,6 +635,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiGranthaGrantha extends Struct.CollectionTypeSchema {
   collectionName: 'granthas';
   info: {
+    description: 'Top-level container for a Grantha';
     displayName: 'Grantha';
     pluralName: 'granthas';
     singularName: 'grantha';
@@ -692,7 +652,6 @@ export interface ApiGranthaGrantha extends Struct.CollectionTypeSchema {
       ['Sri Shankarayacharya', 'Upanishad Brahmendra']
     >;
     BhashyamName: Schema.Attribute.String;
-    chapters: Schema.Attribute.Relation<'oneToMany', 'api::chapter.chapter'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -713,58 +672,131 @@ export interface ApiGranthaGrantha extends Struct.CollectionTypeSchema {
       'api::grantha.grantha'
     > &
       Schema.Attribute.Private;
+    NumberOfTeekas: Schema.Attribute.Integer & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.Relation<'oneToMany', 'api::section.section'>;
+    teekas: Schema.Attribute.Relation<'oneToMany', 'api::teeka.teeka'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiPrasthanaThrayaScreenPrasthanaThrayaScreen
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'prasthana_thraya_screens';
+export interface ApiManthraManthra extends Struct.CollectionTypeSchema {
+  collectionName: 'manthras';
   info: {
-    displayName: 'Prasthana-thraya-screens';
-    pluralName: 'prasthana-thraya-screens';
-    singularName: 'prasthana-thraya-screen';
+    displayName: 'Manthra';
+    pluralName: 'manthras';
+    singularName: 'manthra';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    BhashyaEntryCollection: Schema.Attribute.Component<
-      'default.bhashya-entries',
-      true
-    >;
-    BhashyakaraIntroduction: Schema.Attribute.Component<
+    BhashyamEntry: Schema.Attribute.Component<
       'shared.text-and-translation',
       false
     >;
-    BhashyamAuthor: Schema.Attribute.Enumeration<
-      ['Sri Shankaracharya', 'Sri Upanishad Brahmendra']
-    >;
-    BhashyamName: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    EnglishIntroductionToText: Schema.Attribute.Text;
-    GranthaName: Schema.Attribute.String;
-    GranthaType: Schema.Attribute.Enumeration<
-      [
-        'Upanishad',
-        'Bhagavad Gita',
-        'Brahma Sutra',
-        'Prakarana Grantha',
-        'Other Text',
-      ]
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::prasthana-thraya-screen.prasthana-thraya-screen'
+      'api::manthra.manthra'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    Section: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
+    ShlokaManthraEntry: Schema.Attribute.Component<
+      'shared.text-and-translation',
+      false
+    >;
+    ShlokaManthraNumber: Schema.Attribute.String;
+    Teekas: Schema.Attribute.Component<'default.bhashya-entries', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectionSection extends Struct.CollectionTypeSchema {
+  collectionName: 'sections';
+  info: {
+    displayName: 'Section';
+    pluralName: 'sections';
+    singularName: 'section';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    grantha: Schema.Attribute.Relation<'manyToOne', 'api::grantha.grantha'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::section.section'
+    > &
+      Schema.Attribute.Private;
+    manthras: Schema.Attribute.Relation<'oneToMany', 'api::manthra.manthra'>;
+    parent: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
+    publishedAt: Schema.Attribute.DateTime;
+    sub_sections: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::section.section'
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<
+      ['Adhyaya', 'Valli', 'Brahmana', 'Anuvaka', 'Khanda']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTeekaTeeka extends Struct.CollectionTypeSchema {
+  collectionName: 'teekas';
+  info: {
+    displayName: 'Teeka';
+    pluralName: 'teekas';
+    singularName: 'teeka';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    grantha: Schema.Attribute.Relation<'manyToOne', 'api::grantha.grantha'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::teeka.teeka'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    TeekaAuthor: Schema.Attribute.Enumeration<
+      [
+        'Anandagiri',
+        'Vachaspati Mishra',
+        'Padmapada',
+        'Sureshvaracharya',
+        'Prakasatman',
+        'Govindananda',
+        'Ramananda Saraswati',
+        'Madhusudana Saraswati',
+        'Dhanapati Suri',
+        'Amalananda',
+        'Appayya Dikshita',
+        'Shankarananda',
+        'Shriharsha',
+        'Chitsukha',
+        'Vidyaranya',
+      ]
+    >;
+    TeekaName: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1287,10 +1319,11 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
-      'api::chapter.chapter': ApiChapterChapter;
       'api::global.global': ApiGlobalGlobal;
       'api::grantha.grantha': ApiGranthaGrantha;
-      'api::prasthana-thraya-screen.prasthana-thraya-screen': ApiPrasthanaThrayaScreenPrasthanaThrayaScreen;
+      'api::manthra.manthra': ApiManthraManthra;
+      'api::section.section': ApiSectionSection;
+      'api::teeka.teeka': ApiTeekaTeeka;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

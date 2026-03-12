@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * chapter controller
+ * teeka controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::chapter.chapter');
+module.exports = createCoreController('api::teeka.teeka');

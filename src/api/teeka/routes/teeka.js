@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * chapter router
+ * teeka router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::chapter.chapter');
+module.exports = createCoreRouter('api::teeka.teeka');

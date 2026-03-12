@@ -4,7 +4,8 @@
   "info": {
     "singularName": "grantha",
     "pluralName": "granthas",
-    "displayName": "Grantha"
+    "displayName": "Grantha",
+    "description": "Top-level container for a Grantha"
   },
   "options": {
     "draftAndPublish": true
@@ -43,10 +44,20 @@
       "component": "shared.text-and-translation",
       "repeatable": false
     },
-    "chapters": {
+    "sections": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::chapter.chapter",
+      "target": "api::section.section",
+      "mappedBy": "grantha"
+    },
+    "NumberOfTeekas": {
+      "type": "integer",
+      "required": true
+    },
+    "teekas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::teeka.teeka",
       "mappedBy": "grantha"
     }
   }

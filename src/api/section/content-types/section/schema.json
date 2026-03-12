@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "singularName": "section",
+    "pluralName": "sections",
+    "displayName": "Section"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Adhyaya",
+        "Valli",
+        "Brahmana",
+        "Anuvaka",
+        "Khanda"
+      ]
+    },
+    "grantha": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::grantha.grantha",
+      "inversedBy": "sections"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "inversedBy": "sub_sections"
+    },
+    "sub_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::section.section",
+      "mappedBy": "parent"
+    },
+    "manthras": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::manthra.manthra",
+      "mappedBy": "Section"
+    }
+  }
+}
