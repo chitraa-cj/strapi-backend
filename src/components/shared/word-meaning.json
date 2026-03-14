@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_word_meanings",
+  "info": {
+    "displayName": "WordMeaning",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "word": {
+      "type": "text"
+    },
+    "meaning": {
+      "type": "text"
+    },
+    "position": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

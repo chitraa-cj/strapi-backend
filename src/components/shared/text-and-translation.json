@@ -9,6 +9,9 @@
     "SanskritTextEntry": {
       "type": "blocks"
     },
+    "IASTTransliteration": {
+      "type": "blocks"
+    },
     "EnglishTranslationText": {
       "type": "blocks"
     },

@@ -15,14 +15,30 @@
       "type": "string",
       "required": true
     },
+    "order": {
+      "type": "integer"
+    },
+    "titleTranslations": {
+      "type": "component",
+      "component": "shared.translations",
+      "repeatable": true
+    },
     "type": {
       "type": "enumeration",
       "enum": [
-        "Adhyaya",
-        "Valli",
-        "Brahmana",
-        "Anuvaka",
-        "Khanda"
+        "adhyay",
+        "khanda",
+        "valli",
+        "pada",
+        "kanda",
+        "sukta",
+        "varga",
+        "anuvaka",
+        "prakarana",
+        "chapter",
+        "part",
+        "section",
+        "book"
       ]
     },
     "grantha": {

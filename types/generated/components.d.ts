@@ -103,6 +103,7 @@ export interface SharedTextAndTranslation extends Struct.ComponentSchema {
   };
   attributes: {
     EnglishTranslationText: Schema.Attribute.Blocks;
+    IASTTransliteration: Schema.Attribute.Blocks;
     OtherTranslations: Schema.Attribute.Component<'shared.translations', true>;
     SanskritTextEntry: Schema.Attribute.Blocks;
   };
@@ -115,11 +116,72 @@ export interface SharedTranslations extends Struct.ComponentSchema {
     icon: 'dashboard';
   };
   attributes: {
+    isAiTranslated: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     LanguageOfTranslation: Schema.Attribute.Enumeration<
-      ['English', 'Tamil', 'Hindi', 'Gujarati', 'Marathi']
+      [
+        'Sanskrit',
+        'Hindi',
+        'English',
+        'Kannada',
+        'Telugu',
+        'Tamil',
+        'Malayalam',
+        'Gujarati',
+        'Bengali',
+        'Marathi',
+        'Odia',
+        'Punjabi',
+        'Assamese',
+        'Konkani',
+        'Sinhala',
+        'German',
+        'French',
+        'Spanish',
+        'Portuguese',
+        'Italian',
+        'Dutch',
+        'Russian',
+        'Ukrainian',
+        'Greek',
+        'Polish',
+        'Czech',
+        'Romanian',
+        'Hungarian',
+        'Turkish',
+        'Persian',
+        'Arabic',
+        'Hebrew',
+        'Japanese',
+        'Korean',
+        'Thai',
+        'Vietnamese',
+        'Indonesian',
+        'Malay',
+        'Burmese',
+        'Tibetan',
+        'Mongolian',
+        'Amharic',
+        'Swahili',
+        'Mandarin',
+        'Egyptian_Arabic',
+      ]
     > &
       Schema.Attribute.DefaultTo<'English'>;
     TranslationText: Schema.Attribute.Blocks;
+  };
+}
+
+export interface SharedWordMeaning extends Struct.ComponentSchema {
+  collectionName: 'components_shared_word_meanings';
+  info: {
+    displayName: 'WordMeaning';
+    icon: 'bulletList';
+  };
+  attributes: {
+    meaning: Schema.Attribute.Text;
+    position: Schema.Attribute.Integer;
+    word: Schema.Attribute.Text;
   };
 }
 
@@ -136,6 +198,7 @@ declare module '@strapi/strapi' {
       'shared.slider': SharedSlider;
       'shared.text-and-translation': SharedTextAndTranslation;
       'shared.translations': SharedTranslations;
+      'shared.word-meaning': SharedWordMeaning;
     }
   }
 }

@@ -30,17 +30,25 @@ module.exports = ({ env }) => {
         database: env('DATABASE_NAME', 'strapi'),
         user: env('DATABASE_USERNAME', 'strapi'),
         password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: env.bool('DATABASE_SSL', false) && {
-          key: env('DATABASE_SSL_KEY', undefined),
-          cert: env('DATABASE_SSL_CERT', undefined),
-          ca: env('DATABASE_SSL_CA', undefined),
-          capath: env('DATABASE_SSL_CAPATH', undefined),
-          cipher: env('DATABASE_SSL_CIPHER', undefined),
-          rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
-        },
+        ssl: env.bool('DATABASE_SSL', false)
+          ? env('DATABASE_SSL_CA') || env('DATABASE_SSL_CERT')
+            ? {
+                key: env('DATABASE_SSL_KEY', undefined),
+                cert: env('DATABASE_SSL_CERT', undefined),
+                ca: env('DATABASE_SSL_CA', undefined),
+                capath: env('DATABASE_SSL_CAPATH', undefined),
+                cipher: env('DATABASE_SSL_CIPHER', undefined),
+                rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
+              }
+            : { rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', false) }
+          : false,
         schema: env('DATABASE_SCHEMA', 'public'),
+        connectionTimeoutMillis: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
       },
-      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
+      pool: {
+        min: env.int('DATABASE_POOL_MIN', 0),
+        max: env.int('DATABASE_POOL_MAX', 10),
+      },
     },
     sqlite: {
       connection: {
@@ -54,7 +62,7 @@ module.exports = ({ env }) => {
     connection: {
       client,
       ...connections[client],
-      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
+      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 120000),
     },
   };
 };

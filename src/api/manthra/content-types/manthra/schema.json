@@ -11,6 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "order": {
+      "type": "integer"
+    },
     "Section": {
       "type": "relation",
       "relation": "manyToOne",
@@ -33,6 +36,11 @@
     "Teekas": {
       "type": "component",
       "component": "default.bhashya-entries",
+      "repeatable": true
+    },
+    "wordMeanings": {
+      "type": "component",
+      "component": "shared.word-meaning",
       "repeatable": true
     }
   }

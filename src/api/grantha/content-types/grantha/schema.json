@@ -16,6 +16,24 @@
       "type": "string",
       "required": true
     },
+    "slug": {
+      "type": "uid",
+      "targetField": "GranthaName"
+    },
+    "GranthaNameTranslations": {
+      "type": "component",
+      "component": "shared.translations",
+      "repeatable": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "order": {
+      "type": "integer"
+    },
     "GranthaType": {
       "type": "enumeration",
       "enum": [
@@ -43,6 +61,12 @@
       "type": "component",
       "component": "shared.text-and-translation",
       "repeatable": false
+    },
+    "introVideoId": {
+      "type": "string"
+    },
+    "introVideoTitle": {
+      "type": "string"
     },
     "sections": {
       "type": "relation",
